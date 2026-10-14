@@ -23,5 +23,4 @@ Aplicación de escritorio para gestionar citas, evaluaciones y talleres de estud
 3. Revisa la cadena de conexión en `App.config` y ajústala a tu servidor.
 4. Ejecuta el proyecto `Presentacion`.
 
-## Nota
-Proyecto académico del curso [nombre del curso]. Los datos incluidos en el script son de prueba.
+
