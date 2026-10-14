@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F97ED71-5EE7-46BF-B58E-CEEB493029A5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Presentacion</RootNamespace>
+    <AssemblyName>Presentacion</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormAdmins\FormCitaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormCitaAdmin.Designer.cs">
+      <DependentUpon>FormCitaAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmins\FormDashboardAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormDashboardAdmin.Designer.cs">
+      <DependentUpon>FormDashboardAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmins\FormEspecialistasAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormEspecialistasAdmin.Designer.cs">
+      <DependentUpon>FormEspecialistasAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmins\FormEstudiantesAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormEstudiantesAdmin.Designer.cs">
+      <DependentUpon>FormEstudiantesAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmins\FormEvaluacionesAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormEvaluacionesAdmin.Designer.cs">
+      <DependentUpon>FormEvaluacionesAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmins\FormReportesAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormReportesAdmin.Designer.cs">
+      <DependentUpon>FormReportesAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmins\FormTalleresAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmins\FormTalleresAdmin.Designer.cs">
+      <DependentUpon>FormTalleresAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormCitasEspecialistas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormCitasEspecialistas.Designer.cs">
+      <DependentUpon>FormCitasEspecialistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormDashboardEspecialista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormDashboardEspecialista.Designer.cs">
+      <DependentUpon>FormDashboardEspecialista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormEstudiantesEspecialistas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormEstudiantesEspecialistas.Designer.cs">
+      <DependentUpon>FormEstudiantesEspecialistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormEvaluacionesEspecialistas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormEvaluacionesEspecialistas.Designer.cs">
+      <DependentUpon>FormEvaluacionesEspecialistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormHistorialEstudiantesEspecialista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormHistorialEstudiantesEspecialista.Designer.cs">
+      <DependentUpon>FormHistorialEstudiantesEspecialista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormPerfilEspecialista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormPerfilEspecialista.Designer.cs">
+      <DependentUpon>FormPerfilEspecialista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormTalleresEspecialistas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEspecialistas\FormTalleresEspecialistas.Designer.cs">
+      <DependentUpon>FormTalleresEspecialistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEstudiante\FormEvaluacionesEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstudiante\FormEvaluacionesEstudiante.Designer.cs">
+      <DependentUpon>FormEvaluacionesEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEstudiante\FormInicioEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstudiante\FormInicioEstudiante.Designer.cs">
+      <DependentUpon>FormInicioEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEstudiante\FormMisCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstudiante\FormMisCitas.Designer.cs">
+      <DependentUpon>FormMisCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEstudiante\FormPerfilEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstudiante\FormPerfilEstudiante.Designer.cs">
+      <DependentUpon>FormPerfilEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEstudiante\FormTallleresEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstudiante\FormTallleresEstudiante.Designer.cs">
+      <DependentUpon>FormTallleresEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="FormAdmins\FormCitaAdmin.resx">
+      <DependentUpon>FormCitaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmins\FormDashboardAdmin.resx">
+      <DependentUpon>FormDashboardAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmins\FormEspecialistasAdmin.resx">
+      <DependentUpon>FormEspecialistasAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmins\FormEstudiantesAdmin.resx">
+      <DependentUpon>FormEstudiantesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmins\FormEvaluacionesAdmin.resx">
+      <DependentUpon>FormEvaluacionesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmins\FormReportesAdmin.resx">
+      <DependentUpon>FormReportesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmins\FormTalleresAdmin.resx">
+      <DependentUpon>FormTalleresAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormCitasEspecialistas.resx">
+      <DependentUpon>FormCitasEspecialistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormDashboardEspecialista.resx">
+      <DependentUpon>FormDashboardEspecialista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormEstudiantesEspecialistas.resx">
+      <DependentUpon>FormEstudiantesEspecialistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormEvaluacionesEspecialistas.resx">
+      <DependentUpon>FormEvaluacionesEspecialistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormHistorialEstudiantesEspecialista.resx">
+      <DependentUpon>FormHistorialEstudiantesEspecialista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormPerfilEspecialista.resx">
+      <DependentUpon>FormPerfilEspecialista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEspecialistas\FormTalleresEspecialistas.resx">
+      <DependentUpon>FormTalleresEspecialistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstudiante\FormEvaluacionesEstudiante.resx">
+      <DependentUpon>FormEvaluacionesEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstudiante\FormInicioEstudiante.resx">
+      <DependentUpon>FormInicioEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstudiante\FormMisCitas.resx">
+      <DependentUpon>FormMisCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstudiante\FormPerfilEstudiante.resx">
+      <DependentUpon>FormPerfilEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstudiante\FormTallleresEstudiante.resx">
+      <DependentUpon>FormTallleresEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{8f5d83df-2af9-486f-bd0a-ddcdf4df90b6}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{def1469d-504f-4dfc-bc3e-444578f2b039}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2026-06-11 at 1.29.30 AM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2026-06-11 at 1.31.17 AM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2026-06-11 at 1.35.11 AM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2026-06-11 at 1.39.15 AM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2026-06-11 at 1.41.22 AM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 190914.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 191202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 191309.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 191704.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 191906.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 192156.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 192432.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 193557.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 204933.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 205113.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 205134.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 213856.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 213933.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 214000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 214305.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-20 214433.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 144609.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 165956.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 170320.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 175151.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 180951.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 181758.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 185445.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 190043.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 190642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 190812.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 190840.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 191038.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 210140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-06-22 210653.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\ESP001.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP010.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP002.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP003.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP004.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP005.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP006.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP007.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP008.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ESP009.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" />
+</Project>

@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NeuroGGestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_Estudiante" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_Especialista" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora" Type="time" Precision="7" />
+          <Property Name="estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Especialista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="especialidad" Type="varchar" MaxLength="100" />
+          <Property Name="creadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="modificadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="fechaModific" Type="datetime" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="gradoAcademico" Type="varchar" MaxLength="50" />
+          <Property Name="contactoApod" Type="varchar" MaxLength="100" />
+          <Property Name="creadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="modificadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="fechaModific" Type="datetime" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Cita" Type="varchar" MaxLength="20" />
+          <Property Name="observaciones" Type="text" />
+          <Property Name="resultados" Type="text" />
+          <Property Name="recomendacion" Type="text" />
+        </EntityType>
+        <EntityType Name="Inscripcion_Taller">
+          <Key>
+            <PropertyRef Name="id_Taller" />
+            <PropertyRef Name="id_Estudiante" />
+          </Key>
+          <Property Name="id_Taller" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_Estudiante" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="asistencia" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Taller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tipoTaller" Type="varchar" MaxLength="50" />
+          <Property Name="ocupacionMaxima" Type="int" />
+          <Property Name="fechaTaller" Type="datetime" />
+          <Property Name="creadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="modificadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="fechaModific" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="clave" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Cita_Especialista">
+          <End Role="Especialista" Type="Self.Especialista" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialista">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="id_Especialista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Estudiante">
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Especialista_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Especialista" Type="Self.Especialista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Especialista">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluacion_Cita">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="id_Cita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Estudiante">
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+          <End Role="Inscripcion_Taller" Type="Self.Inscripcion_Taller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Taller">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Taller">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="Inscripcion_Taller" Type="Self.Inscripcion_Taller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Taller">
+              <PropertyRef Name="id_Taller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NeuroGGestModelStoreContainer">
+          <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialista" EntityType="Self.Especialista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripcion_Taller" EntityType="Self.Inscripcion_Taller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taller" EntityType="Self.Taller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cita_Especialista" Association="Self.FK_Cita_Especialista">
+            <End Role="Especialista" EntitySet="Especialista" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Estudiante" Association="Self.FK_Cita_Estudiante">
+            <End Role="Estudiante" EntitySet="Estudiante" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Especialista_Usuario" Association="Self.FK_Especialista_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Especialista" EntitySet="Especialista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Usuario" Association="Self.FK_Estudiante_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluacion_Cita" Association="Self.FK_Evaluacion_Cita">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Estudiante" Association="Self.FK_Inscripcion_Estudiante">
+            <End Role="Estudiante" EntitySet="Estudiante" />
+            <End Role="Inscripcion_Taller" EntitySet="Inscripcion_Taller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Taller" Association="Self.FK_Inscripcion_Taller">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="Inscripcion_Taller" EntitySet="Inscripcion_Taller" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NeuroGGestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Estudiante" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Especialista" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora" Type="Time" Precision="7" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Especialista" Relationship="Self.FK_Cita_Especialista" FromRole="Cita" ToRole="Especialista" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK_Cita_Estudiante" FromRole="Cita" ToRole="Estudiante" />
+          <NavigationProperty Name="Evaluacion" Relationship="Self.FK_Evaluacion_Cita" FromRole="Cita" ToRole="Evaluacion" />
+        </EntityType>
+        <EntityType Name="Especialista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="modificadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModific" Type="DateTime" Precision="3" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Especialista" FromRole="Especialista" ToRole="Cita" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Especialista_Usuario" FromRole="Especialista" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gradoAcademico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactoApod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="modificadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModific" Type="DateTime" Precision="3" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Estudiante" FromRole="Estudiante" ToRole="Cita" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Estudiante_Usuario" FromRole="Estudiante" ToRole="Usuario" />
+          <NavigationProperty Name="Inscripcion_Taller" Relationship="Self.FK_Inscripcion_Estudiante" FromRole="Estudiante" ToRole="Inscripcion_Taller" />
+        </EntityType>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Cita" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="resultados" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="recomendacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK_Evaluacion_Cita" FromRole="Evaluacion" ToRole="Cita" />
+        </EntityType>
+        <EntityType Name="Inscripcion_Taller">
+          <Key>
+            <PropertyRef Name="id_Taller" />
+            <PropertyRef Name="id_Estudiante" />
+          </Key>
+          <Property Name="id_Taller" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Estudiante" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="asistencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK_Inscripcion_Estudiante" FromRole="Inscripcion_Taller" ToRole="Estudiante" />
+          <NavigationProperty Name="Taller" Relationship="Self.FK_Inscripcion_Taller" FromRole="Inscripcion_Taller" ToRole="Taller" />
+        </EntityType>
+        <EntityType Name="Taller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoTaller" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ocupacionMaxima" Type="Int32" />
+          <Property Name="fechaTaller" Type="DateTime" Precision="3" />
+          <Property Name="creadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="modificadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModific" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Inscripcion_Taller" Relationship="Self.FK_Inscripcion_Taller" FromRole="Taller" ToRole="Inscripcion_Taller" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Especialista" Relationship="Self.FK_Especialista_Usuario" FromRole="Usuario" ToRole="Especialista" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK_Estudiante_Usuario" FromRole="Usuario" ToRole="Estudiante" />
+        </EntityType>
+        <Association Name="FK_Cita_Especialista">
+          <End Role="Especialista" Type="Self.Especialista" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialista">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="id_Especialista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Estudiante">
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluacion_Cita">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="id_Cita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Especialista_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Especialista" Type="Self.Especialista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Especialista">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Estudiante">
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+          <End Role="Inscripcion_Taller" Type="Self.Inscripcion_Taller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Taller">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Taller">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="Inscripcion_Taller" Type="Self.Inscripcion_Taller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Taller">
+              <PropertyRef Name="id_Taller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NeuroGGestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cita" EntityType="Self.Cita" />
+          <EntitySet Name="Especialista" EntityType="Self.Especialista" />
+          <EntitySet Name="Estudiante" EntityType="Self.Estudiante" />
+          <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" />
+          <EntitySet Name="Inscripcion_Taller" EntityType="Self.Inscripcion_Taller" />
+          <EntitySet Name="Taller" EntityType="Self.Taller" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Cita_Especialista" Association="Self.FK_Cita_Especialista">
+            <End Role="Especialista" EntitySet="Especialista" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Estudiante" Association="Self.FK_Cita_Estudiante">
+            <End Role="Estudiante" EntitySet="Estudiante" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluacion_Cita" Association="Self.FK_Evaluacion_Cita">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Especialista_Usuario" Association="Self.FK_Especialista_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Especialista" EntitySet="Especialista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Usuario" Association="Self.FK_Estudiante_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Estudiante" Association="Self.FK_Inscripcion_Estudiante">
+            <End Role="Estudiante" EntitySet="Estudiante" />
+            <End Role="Inscripcion_Taller" EntitySet="Inscripcion_Taller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Taller" Association="Self.FK_Inscripcion_Taller">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="Inscripcion_Taller" EntitySet="Inscripcion_Taller" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NeuroGGestModelStoreContainer" CdmEntityContainer="NeuroGGestEntities">
+          <EntitySetMapping Name="Cita">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Cita">
+              <MappingFragment StoreEntitySet="Cita">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="id_Especialista" ColumnName="id_Especialista" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialista">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Especialista">
+              <MappingFragment StoreEntitySet="Especialista">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="creadoPor" ColumnName="creadoPor" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="modificadoPor" ColumnName="modificadoPor" />
+                <ScalarProperty Name="fechaModific" ColumnName="fechaModific" />
+                <ScalarProperty Name="login" ColumnName="login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiante">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Estudiante">
+              <MappingFragment StoreEntitySet="Estudiante">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="gradoAcademico" ColumnName="gradoAcademico" />
+                <ScalarProperty Name="contactoApod" ColumnName="contactoApod" />
+                <ScalarProperty Name="creadoPor" ColumnName="creadoPor" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="modificadoPor" ColumnName="modificadoPor" />
+                <ScalarProperty Name="fechaModific" ColumnName="fechaModific" />
+                <ScalarProperty Name="login" ColumnName="login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluacion">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Evaluacion">
+              <MappingFragment StoreEntitySet="Evaluacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Cita" ColumnName="id_Cita" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="resultados" ColumnName="resultados" />
+                <ScalarProperty Name="recomendacion" ColumnName="recomendacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripcion_Taller">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Inscripcion_Taller">
+              <MappingFragment StoreEntitySet="Inscripcion_Taller">
+                <ScalarProperty Name="id_Taller" ColumnName="id_Taller" />
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="asistencia" ColumnName="asistencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taller">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Taller">
+              <MappingFragment StoreEntitySet="Taller">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipoTaller" ColumnName="tipoTaller" />
+                <ScalarProperty Name="ocupacionMaxima" ColumnName="ocupacionMaxima" />
+                <ScalarProperty Name="fechaTaller" ColumnName="fechaTaller" />
+                <ScalarProperty Name="creadoPor" ColumnName="creadoPor" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="modificadoPor" ColumnName="modificadoPor" />
+                <ScalarProperty Name="fechaModific" ColumnName="fechaModific" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="NeuroGGestModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

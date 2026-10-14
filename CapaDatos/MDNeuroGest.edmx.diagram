@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3494006fa0b4e96bc1cad858041625d" Name="Diagram1">
+        <EntityTypeShape EntityType="NeuroGGestModel.Cita" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuroGGestModel.Especialista" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuroGGestModel.Estudiante" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuroGGestModel.Evaluacion" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuroGGestModel.Inscripcion_Taller" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuroGGestModel.Taller" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuroGGestModel.Usuario" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Cita_Especialista" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Cita_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Evaluacion_Cita" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Especialista_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Estudiante_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Inscripcion_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuroGGestModel.FK_Inscripcion_Taller" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
